@@ -1,7 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
 import { MovieCard } from '../movie-card/movie-card';
-
 import { MovieView } from '../movie-view/movie-view';
 
 export class MainView extends React.Component {
@@ -9,18 +9,22 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [
-        { _id: 1, Title: 'Knives Out', 
-          Description: 'A  film about a detective who investigates the death in a very disfunctional wealthy family',
-          ImagePath: 'https://upload.wikimedia.org/wikipedia/en/1/1f/Knives_Out_poster.jpeg'},
-        { _id: 2, Title: 'Resevoir Dogs',
-          Description: 'A  film about the aftermath of a jewelry heist gone wrong. The surviving criminals do not know who to trust within each other',
-          ImagePath: 'https://upload.wikimedia.org/wikipedia/en/0/01/Reservoir_Dogs.png'},
-        { _id: 3, Title: 'Shutter Island',
-          Description: 'A US Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane',
-          ImagePath: 'https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg'}
+
       ],
       selectedMovie: null
     };
+  }
+
+  componentDidMount(){
+    axios.get('https://my-favorite-flix.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   setSelectedMovie(newSelectedMovie) {

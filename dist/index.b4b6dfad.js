@@ -23946,6 +23946,7 @@ class MainView extends _reactDefault.default.Component {
         }, this));
     }
 }
+exports.default = MainView;
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
 } finally {

@@ -21,7 +21,17 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Description}</span>
         </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
-
+        <Link to={`/director/${movie.Director.Name}`}>
+          <Button variant="link">Director</Button>
+        </Link>
+        <Link to={`/genre/${movie.Genre.Name}`}>
+          <Button variant="link">Genre</Button>
+        </Link>
+        <Route path="/movies/:movieId" render={({ match, history }) => {
+          return <Col md={8}>
+          <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+        </Col>
+}} />
        </div>
     );
   }

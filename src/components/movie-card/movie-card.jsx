@@ -43,5 +43,4 @@ MovieCard.propTypes = {
       Deathyear: PropTypes.string,
     }),
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };

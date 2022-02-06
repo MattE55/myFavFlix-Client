@@ -1,11 +1,19 @@
 import React from 'react';
 import './movie-view.scss';
+import Button from 'react-bootstrap/Button';
+
+
+import { Link } from "react-router-dom";
+
 
 
 export class MovieView extends React.Component {
 
   render() {
     const { movie, onBackClick } = this.props;
+      if (!movie) {
+        return null;
+      }
 
     return (
       <div className="movie-view">
@@ -26,24 +34,7 @@ export class MovieView extends React.Component {
         </Link>
         <Link to={`/genre/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
-        </Link>
-        <Route path="/movies/:movieId" render={({ match, history }) => {
-          return <Col md={8}>
-          <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
-        </Col>
-        }} />
-        <Route path="/director/:name" render={({ match, history }) => {
-          if (movies.length === 0) return <div className="main-view" />;
-          return <Col md={8}>
-          <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
-          </Col>
-          }} />
-        <Route path="/genre/:name" render={({ match, history }) => {
-          if (movies.length === 0) return <div className="main-view" />;
-          return <Col md={8}>
-          <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
-        </Col>
-        }} />
+        </Link> 
        </div>
     );
   }

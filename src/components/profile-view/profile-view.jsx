@@ -36,7 +36,8 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
     axios.get('https://my-favorite-flix.herokuapp.com/users/Username', {
       headers: { Authorization: `Bearer ${token}`}
       .then(response => {
-        // Assign the result to the state
+        console.log(response);
+        console.log(response.data);
         this.setState({
           users: response.data
         });
@@ -55,8 +56,9 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
           Password: password,
       })
       .then(response =>{
-          ?
-      })
+          console.log(response);
+          console.log(response.data);
+      });
       .catch(function (error) {
         console.log(error);
       });
@@ -64,13 +66,13 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
   }
 
   const removeFav = (id) => {
-    e.preventDefault();
       axios.del('https://my-favorite-flix.herokuapp.com/movies/:title', {
-        headers: { Authorization: `Bearer ${token}`}
-          FavoriteMovies: []
+        headers: { Authorization: `Bearer ${token}`},
+          FavoriteMovies: [id]
       })
       .then(response =>{
-          ?
+          console.log(response);
+          console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -87,7 +89,8 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
           Email: email
       })
       .then(response =>{
-          ?
+          console.log(response);
+          console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);

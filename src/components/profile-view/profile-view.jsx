@@ -19,7 +19,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
   })
 
   const favoriteMovieList = movies.filter{(movies) => {
-    axios.get('https://my-favorite-flix.herokuapp.com/users/FavoriteMovies', {
+    axios.get('https://my-favorite-flix.herokuapp.com/users/:FavoriteMovies', {
     })
     .then(response => {
       this.setState({
@@ -66,7 +66,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
   }
 
   const removeFav = (id) => {
-      axios.del('https://my-favorite-flix.herokuapp.com/movies/:title', {
+      axios.del('https://my-favorite-flix.herokuapp.com/users/:FavoriteMovies', {
         headers: { Authorization: `Bearer ${token}`},
           FavoriteMovies: [id]
       })

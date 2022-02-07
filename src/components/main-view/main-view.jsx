@@ -7,11 +7,14 @@ import { BrowserRouter as Router, Route , Redirect } from "react-router-dom";
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import Menu from '../navbar/navbar';
+import MenuBar from '../navbar/navbar';
 
 export class MainView extends React.Component {
   constructor() {
@@ -74,7 +77,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
+    const { movies, user , onBackClick } = this.state;
     
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user) return <Row>
@@ -86,7 +89,7 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <Menu user={user} />
+        <MenuBar user={user} />
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>

@@ -103,13 +103,13 @@ export class MainView extends React.Component {
             ))
           }} />
       
-          <Route path="/director/:name" render={({ match }) => {
+          <Route path="/director/:name" render={({ match, history }) => {
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
             <DirectorView movies={movies.filter(m => m.Director.Name === match.params.name)} onBackClick={() => history.goBack ()}  />
             </Col>
           }}/>
-          <Route path="/genre/:name" render={({ match }) => {
+          <Route path="/genre/:name" render={({ match, history }) => {
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
             <GenreView movies={movies.filter(m => m.Genre.Name === match.params.name)} onBackClick={() => history.goBack ()}  />

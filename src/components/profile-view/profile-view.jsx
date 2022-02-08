@@ -10,7 +10,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
   const [user, setUser] = useState();
 
   const favoriteMovieList = movies?.filter((movies) => {
-    return user && user.FavoriteMovies.includes(movies.id);
+    return user && user.FavoriteMovies.includes(movies._id);
   });
 
   const getUser = (token) => {

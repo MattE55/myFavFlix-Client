@@ -3,6 +3,7 @@ import './director-view.scss';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { MovieCard } from '../movie-card/movie-card';
+import { Col, Row, Button } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
 
@@ -16,15 +17,27 @@ export class DirectorView extends React.Component {
 
     return (
       <>
-      <Card>
-        <Card.Body>
-          <Card.Title>{firstMovie.Director.Name}</Card.Title>
-          <Card.Text>{firstMovie.Director.Bio}</Card.Text>
-          <Card.Text><span>Birth Year :</span>{firstMovie.Director.Birthyear}</Card.Text>
-          <Card.Text><span>Death Year :</span>{firstMovie.Director.Deathyear}</Card.Text>
-        </Card.Body>
-      </Card>
-      {movies.map(movie => <MovieCard movie={movie} key={movie._id}/>)}
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              <Card.Title>{firstMovie.Director.Name}</Card.Title>
+              <Card.Text>{firstMovie.Director.Bio}</Card.Text>
+              <Card.Text><span>Birth Year :</span>{firstMovie.Director.Birthyear}</Card.Text>
+              <Card.Text><span>Death Year :</span>{firstMovie.Director.Deathyear}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              {movies.map(movie => <MovieCard movie={movie} key={movie._id}/>)}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
 
       <Button onClick={() => { onBackClick(null); }}>Back</Button>
 

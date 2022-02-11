@@ -5,6 +5,9 @@ import "./profile-view.scss";
 import UpdateUser from "./update-user";
 import FavoriteMovies from "./favorite-movies";
 import UserInfo from "./user-info";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Card, Container } from 'react-bootstrap';
 
 export function ProfileView({ movies, onUpdatedUserInfo }) {
   const [user, setUser] = useState();
@@ -85,13 +88,31 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
 if(!user) return null;
 
   return (
-    <div>
-      <UserInfo name={user.Username} email={user.Email} />
-      <FavoriteMovies
-        favoriteMovieList={favoriteMovieList}
-        removeFav={removeFav}
-      />
-      <UpdateUser handleSubmit={handleSubmit} user={user}/>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              <UserInfo name={user.Username} email={user.Email} />
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <UpdateUser handleSubmit={handleSubmit} user={user}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              <FavoriteMovies
+                favoriteMovieList={favoriteMovieList}
+                removeFav={removeFav}
+              />
+            </Card.Body>
+           </Card>   
+        </Col>
+      </Row>
+    </Container>
   );
 }

@@ -1,22 +1,29 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Col, Row, Button } from 'react-bootstrap';
 
 function FavoriteMovies ({ favoriteMovieList }) {
   return (
-    <div>
-      <h2>Favorite Movies</h2>
+    <>
+      <Row>
+        <Col>
+          <h2>Favorite Movies</h2>
+        </Col>
+      </Row>
+      <Row>
         {favoriteMovieList.map((movies) => {
           return (
-            <div key={movies._id}>
+            <Col key={movies._id}>
               <img src={movies.ImagePath} />
               <Link to={`/movies/${movies._id}`}>
                 <h4>{movies.Title}</h4>
               </Link>
-              <button variant="secondary" onClick={() => removeFav(movies._id)}>Remove from favorites</button>
-            </div>
+              <Button variant="secondary" onClick={() => removeFav(movies._id)}>Remove from favorites</Button>
+            </Col>
          )
         })}
-    </div>
+      </Row>
+    </>
   )
 }
 

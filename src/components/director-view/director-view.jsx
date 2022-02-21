@@ -17,7 +17,7 @@ export class DirectorView extends React.Component {
 
     return (
       <>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col>
           <Card>
             <Card.Body>
@@ -29,8 +29,8 @@ export class DirectorView extends React.Component {
           </Card>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="justify-content-md-center">
+        <Col md={7}>
           <Card>
             <Card.Body>
               {movies.map(movie => <MovieCard movie={movie} key={movie._id}/>)}
@@ -39,7 +39,7 @@ export class DirectorView extends React.Component {
         </Col>
       </Row>
 
-      <Button onClick={() => { onBackClick(null); }}>Back</Button>
+      <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
 
       </>
     );

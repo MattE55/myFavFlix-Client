@@ -17,7 +17,7 @@ export class GenreView extends React.Component {
 
     return (
       <>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col>
           <Card>
             <Card.Body>
@@ -27,8 +27,8 @@ export class GenreView extends React.Component {
           </Card>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="justify-content-md-center" md={8}>
+        <Col md={8}>
           <Card>
             <Card.Body>
               {movies.map(movie => <MovieCard movie={movie} key={movie._id}/>)}
@@ -38,7 +38,7 @@ export class GenreView extends React.Component {
       </Row>
       
 
-      <Button onClick={() => { onBackClick(null); }}>Back</Button>
+      <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
 
       </>
     );

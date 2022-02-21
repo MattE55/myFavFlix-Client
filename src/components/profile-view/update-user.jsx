@@ -5,7 +5,7 @@ function UpdateUser({ handleSubmit, handleUpdate, user }) {
   return (
     <form className="profile-form" onSubmit={(e) => handleSubmit(e)}>
       <Form.Group>
-        <h2>Want to change some info?</h2>
+        <h4>Want to change some info?</h4>
         <Form.Label>Username:</Form.Label>
         <Form.Control 
           type="text" 
